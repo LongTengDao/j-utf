@@ -1,0 +1,10 @@
+{
+	"name":"@ltd/j-utf",
+	"version":"1.0.0",
+	"description":"按照 BOM 信息进行 Unicode 解码。从属于“简计划”。",
+	"bugs":"https://GitHub.com/LongTengDao/j-utf/issues",
+	"license":"LGPL",
+	"author":"龙腾道 <LongTengDao@LongTengDao.com> (www.LongTengDao.com)",
+	"main":"lib/@.js",
+	"repository":{ "type":"git", "url":"https://GitHub.com/LongTengDao/j-utf.git" }
+}
