@@ -29,3 +29,31 @@
 ### `.BOM` 常量
 
 -   量值：`"\uFEFF"`
+
+### `.trimBOM(string)` 方法
+
+-   用途：返回剔除开头可能存在的 `BOM` 后的 `string`。
+-   参数：
+    *   `string`
+        -   类型：`string`
+
+### `.startsWithBOM(string)` 方法
+
+-   用途：测试传入的 `string` 是否以 `BOM` 开头。
+-   参数：
+    *   `string`
+        -   类型：`string`
+
+### `.formatOf(buffer)` 方法
+
+-   用途：根据传入 `Buffer` 的 `BOM` 值，返回 `UTF` 数字（`8` 代表 `UTF-8`，`16` 代表 `UTF-16LE`，`16` 代表 `UTF-16BE`，其它情况返回 `0`）。
+-   参数：
+    *   `buffer`
+        -   类型：`Buffer`
+
+### `.bytesOf(buffer)` 方法
+
+-   用途：根据传入 `Buffer` 的 `BOM` 值，返回 `BOM` 值所占的字节数。
+-   参数：
+    *   `buffer`
+        -   类型：`Buffer`
