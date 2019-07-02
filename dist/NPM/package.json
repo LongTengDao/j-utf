@@ -1,0 +1,12 @@
+{
+	"name": "@ltd/j-utf",
+	"description": "UTF util. Belong to \"Plan J\".／UTF 相关共享实用程序。从属于“简计划”。",
+	"version": "3.0.0",
+	"license": "LGPL-3.0",
+	"author": "龙腾道 <LongTengDao@LongTengDao.com> (www.LongTengDao.com)",
+	"bugs": "https://GitHub.com/LongTengDao/j-utf/issues",
+	"repository": {
+		"type": "git",
+		"url": "https://GitHub.com/LongTengDao/j-utf.git"
+	}
+}
