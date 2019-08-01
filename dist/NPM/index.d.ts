@@ -1,7 +1,7 @@
 export = exports;
 declare const exports :{
 	
-	version :'3.0.0',
+	version :'3.1.0',
 	
 	buffer2number (buffer :Buffer, startsWithASCII? :boolean) :number,
 	
