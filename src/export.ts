@@ -14,15 +14,12 @@ export {
 	NON_SCALAR,
 };
 
-export default (
-	/*#__PURE__*/
-	function (UTF) { return UTF['default'] = UTF; }({
-		version: version,
-		buffer2number: buffer2number,
-		buffer2object: buffer2object,
-		buffer2string: buffer2string,
-		string2array: string2array,
-		NON_SCALAR: NON_SCALAR,
-		'default': {} as typeof import('./default.d')
-	})
-);
+import Default from '.default?=';
+export default Default({
+	version: version,
+	buffer2number: buffer2number,
+	buffer2object: buffer2object,
+	buffer2string: buffer2string,
+	string2array: string2array,
+	NON_SCALAR: NON_SCALAR
+});

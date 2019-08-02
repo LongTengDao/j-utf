@@ -1,4 +1,4 @@
-export const version :'3.1.0';
+export const version :'3.2.0';
 
 export function buffer2number (buffer :Buffer, startsWithASCII? :boolean) :number;
 

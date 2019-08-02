@@ -2,14 +2,14 @@
  * 模块名称：j-utf
  * 模块功能：UTF 相关共享实用程序。从属于“简计划”。
    　　　　　UTF util. Belong to "Plan J".
- * 模块版本：3.1.0
+ * 模块版本：3.2.0
  * 许可条款：LGPL-3.0
  * 所属作者：龙腾道 <LongTengDao@LongTengDao.com> (www.LongTengDao.com)
  * 问题反馈：https://GitHub.com/LongTengDao/j-utf/issues
  * 项目主页：https://GitHub.com/LongTengDao/j-utf/
  */
 
-var version = '3.1.0';
+var version = '3.2.0';
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -316,18 +316,102 @@ function string2array (string        , crlf          )           {
 	return string ? string.match(crlf ? POINTS_CRLF : POINTS)  : [];
 }
 
-var _export = (
-	/*#__PURE__*/
-	function (UTF) { return UTF['default'] = UTF; }({
-		version: version,
-		buffer2number: buffer2number,
-		buffer2object: buffer2object,
-		buffer2string: buffer2string,
-		string2array: string2array,
-		NON_SCALAR: NON_SCALAR,
-		'default': {}                                
-	})
+var create = Object.create || (
+	/*! j-globals: Object.create (polyfill) */
+	/*#__PURE__*/ function () {
+		var NULL;
+		if ( document.domain ) {
+			try { dom = new ActiveXObject('htmlfile'); }
+			catch (error) { }
+		}
+		if ( dom ) {
+			dom.write('<script><\/script>');
+			dom.close();
+			NULL = dom.parentWindow.Object.prototype;
+		}
+		else {
+			dom = document.createElement('iframe');
+			dom.setAttribute('style', 'display:none !important;_display:none;');//dom.style.display = 'none';
+			var parent = document.body || document.documentElement;
+			parent.appendChild(dom);
+			dom.src = 'javascript:';
+			NULL = dom.contentWindow.Object.prototype;
+			parent.removeChild(dom);
+		}
+		var dom = null;
+		delete NULL.constructor;
+		delete NULL.hasOwnProperty;
+		delete NULL.isPrototypeOf;
+		delete NULL.propertyIsEnumerable;
+		delete NULL.toLocaleString;
+		delete NULL.toString;
+		delete NULL.valueOf;
+		var Null = function () {};
+		Null.prototype = NULL;
+		var constructor = function () {};
+		function __PURE__ (o, properties) {
+			if ( properties!==undefined$1 ) { throw TypeError('CAN NOT defineProperties in ES 3 Object.create polyfill'); }
+			if ( o===null ) { return new Null; }
+			if ( typeof o!=='object' && typeof o!=='function' ) { throw TypeError('Object prototype may only be an Object or null: '+o); }
+			constructor.prototype = o;
+			var created = new constructor;
+			constructor.prototype = NULL;
+			return created;
+		}
+		return function create (o, properties) {
+			return /*#__PURE__*/ __PURE__(o, properties);
+		};
+	}()
+	/*¡ j-globals: Object.create (polyfill) */
 );
+
+var assign = Object.assign;
+
+var toStringTag = typeof Symbol!=='undefined' ? Symbol.toStringTag : undefined;
+
+var defineProperty = Object.defineProperty;
+
+var freeze = Object.freeze;
+
+var seal = Object.seal;
+
+var Default = (
+	/*! j-globals: default (internal) */
+	function Default (exports, addOnOrigin) {
+		return /*#__PURE__*/ function Module (exports, addOnOrigin) {
+			if ( !addOnOrigin ) { addOnOrigin = exports; exports = create(null); }
+			if ( assign ) { assign(exports, addOnOrigin); }
+			else {
+				for ( var key in addOnOrigin ) { if ( hasOwnProperty.call(addOnOrigin, key) ) { exports[key] = addOnOrigin[key]; } }
+				if ( !{ 'toString': null }.propertyIsEnumerable('toString') ) {
+					var keys = [ 'constructor', 'propertyIsEnumerable', 'isPrototypeOf', 'hasOwnProperty', 'valueOf', 'toLocaleString', 'toString' ];
+					while ( key = keys.pop() ) { if ( hasOwnProperty.call(addOnOrigin, key) ) { exports[key] = addOnOrigin[key]; } }
+				}
+			}
+			exports['default'] = exports;
+			if ( seal ) {
+				typeof exports==='function' && exports.prototype && seal(exports.prototype);
+				if ( toStringTag ) {
+					var descriptor = create(null);
+					descriptor.value = 'Module';
+					defineProperty(exports, toStringTag, descriptor);
+				}
+				freeze(exports);
+			}
+			return exports;
+		}(exports, addOnOrigin);
+	}
+	/*¡ j-globals: default (internal) */
+);
+
+var _export = Default({
+	version: version,
+	buffer2number: buffer2number,
+	buffer2object: buffer2object,
+	buffer2string: buffer2string,
+	string2array: string2array,
+	NON_SCALAR: NON_SCALAR
+});
 
 export default _export;
 export { NON_SCALAR, buffer2number, buffer2object, buffer2string, string2array, version };
